@@ -1,0 +1,18 @@
+site_name: Citrix Receiver for Linux 13.10 OEM Reference Guide 
+site_description: OEM Reference guide for Citrix Receiver for Linux 13.10 
+theme_dir: material
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+     anchorlink: True
+
+pages:
+- Home: index.md
+- Resources to Aid Customization: resources-to-aid-customization.md
+- Tools: tools.md
+- Citrix Receiver for Linux Components: components.md
+- Customize Citrix Receiver for Linux: customize.md
+- Experimental Features: experimental-features.md
+- Reference Information: reference-information.md
