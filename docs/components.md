@@ -12,7 +12,8 @@ Generally, the features in Citrix Receiver are performed by software, but it is 
 
 ## Components used by Citrix Receiver for Linux
   
-Citrix Receiver for Linux contains the following files:  
+Citrix Receiver for Linux contains the following files:
+
 * selfservice - This program replaces the configuration manager, wfcmgr, and allows access to Citrix StoreFront or Program Neighborhood Agent services through the new self-service user interface (UI).  
 * storebrowse - This program is equivalent to the deprecated pnabrowse utility. It queries StoreFront or Program Neighborhood Agent services for virtual desktops and published applications and allows access to them. 
 * wfica - This program is the client engine that creates connections to the server and performs all of the functions of the connections.  
