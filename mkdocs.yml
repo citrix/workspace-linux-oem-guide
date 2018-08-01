@@ -1,6 +1,6 @@
 site_name: Citrix Receiver for Linux 13.10 OEM Reference Guide 
 site_description: OEM Reference guide for Citrix Receiver for Linux 13.10 
-theme_dir: material
+theme_dir: citrix-sdk
 
 markdown_extensions:
   - admonition
