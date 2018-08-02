@@ -1,5 +1,5 @@
-site_name: Citrix Receiver for Linux 13.10 OEM Reference Guide 
-site_description: OEM Reference guide for Citrix Receiver for Linux 13.10 
+site_name: Citrix Workspace app for Linux 1808 OEM Reference Guide 
+site_description: OEM Reference guide for Citrix Workspace app for Linux 1808 
 theme_dir: citrix-sdk
 
 markdown_extensions:
@@ -12,7 +12,7 @@ pages:
 - Home: index.md
 - Resources to Aid Customization: resources-to-aid-customization.md
 - Tools: tools.md
-- Citrix Receiver for Linux Components: components.md
-- Customize Citrix Receiver for Linux: customize.md
+- Citrix Workspace app for Linux Components: components.md
+- Customize Citrix Workspace app for Linux: customize.md
 - Experimental Features: experimental-features.md
 - Reference Information: reference-information.md

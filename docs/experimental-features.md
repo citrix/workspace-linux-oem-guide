@@ -26,7 +26,7 @@ The input and output pipelines are as follows:
 
 ### Optimize GStreamer audio 
  
-If you have set up Citrix Receiver to use the GStreamer framework, you can modify how audio is processed by it using the following settings in the [ClientAudio] section of the appropriate configuration file.  
+If you have set up Citrix Workspace app to use the GStreamer framework, you can modify how audio is processed by it using the following settings in the [ClientAudio] section of the appropriate configuration file.  
 
 Before using this procedure, you should be familiar the GStreamer SDK, including the concepts of audio sinks and audio sources.
   

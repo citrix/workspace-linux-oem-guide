@@ -1,6 +1,6 @@
-# Customize Citrix Receiver for Linux  
+# Customize Citrix Workspace app for Linux  
 
-This section contains task-based procedures for customizing Citrix Receiver for Linux. Where possible, examples and context are provided as well as instructions for developing and configuring Citrix Receiver.  
+This section contains task-based procedures for customizing Citrix Workspace app for Linux. Where possible, examples and context are provided as well as instructions for developing and configuring Citrix Workspace app.  
 
 The following aspects can be customized:  
 
@@ -10,14 +10,14 @@ The following aspects can be customized:
 * Multimedia  
 * Performance  
 
-## Customize a Citrix Receiver for Linux installation 
+## Customize a Citrix Workspace app for Linux installation 
  
-You can customize Citrix Receiver configuration before installation by modifying the contents of the package and then repackaging the files. Your changes will be included in every Citrix Receiver installed using the modified package.  
+You can customize Citrix Workspace app configuration before installation by modifying the contents of the package and then repackaging the files. Your changes will be included in every Citrix Workspace app installed using the modified package.  
 
-### To customize a Citrix Receiver for Linux installation  
+### To customize a Citrix Workspace app for Linux installation  
 
-1.	Expand the Citrix Receiver package file into an empty directory. The package file is called **platform.major.minor.release.build.tar.gz** (for example, **linuxx86-13.4.0.10109380.tar.gz** for the Linux/x86 platform).  
-2.	Make the required changes to the Citrix Receiver package. For example, you might add a new SSL root certificate to the package if you want to use a certificate from a Certificate Authority that is not part of the standard Receiver installation. To add a new SSL root certificate to the package, see **Install root certificates on user devices**. For more information about built-in certificates, see **Configure and enable SSL and TLS** on the [Product Documentation](https://docs.citrix.com/) site.  
+1.	Expand the Citrix Workspace app package file into an empty directory. The package file is called **platform.major.minor.release.build.tar.gz** (for example, **linuxx86-13.4.0.10109380.tar.gz** for the Linux/x86 platform).  
+2.	Make the required changes to the Citrix Workspace app package. For example, you might add a new SSL root certificate to the package if you want to use a certificate from a Certificate Authority that is not part of the standard Workspace app installation. To add a new SSL root certificate to the package, see **Install root certificates on user devices**. For more information about built-in certificates, see **Configure and enable SSL and TLS** on the [Product Documentation](https://docs.citrix.com/) site.  
 3.	Open the PkgID file.  
 4.	Add the following line to indicate that the package was modified: `MODIFIED=traceinfo` Where `traceinfo` is information indicating who made the change and when. The exact format of this information is not important. 
 5. Save and close the file.  
@@ -31,22 +31,22 @@ You can customize Citrix Receiver configuration before installation by modifying
 	* Group  
 	* Size
 4. Save and close the file.  
-2. Use the tar command to rebuild Receiver package file, for example: `tar czf ../newpackage.tar.gz *`  
+2. Use the tar command to rebuild Workspace app package file, for example: `tar czf ../newpackage.tar.gz *`  
 
 ### About the configuration files  
 
-To change advanced or less common session settings, you can modify Receiver's configuration files. These are read each time wfica starts. You can update various different files depending on the effect you want the changes to have.  
+To change advanced or less common session settings, you can modify Workspace app's configuration files. These are read each time wfica starts. You can update various different files depending on the effect you want the changes to have.  
 Be aware that, if session sharing is enabled, an existing session might be used instead of a newly reconfigured one. This might cause the session to ignore changes you made in a configuration file.  
 
-### Apply default to all Citrix Receiver users  
+### Apply default to all Citrix Workspace app users  
 
-If you want to change the default for all Citrix Receiver users, modify the module.ini configuration file in the `$ICAROOT/config` directory. 
+If you want to change the default for all Citrix Workspace app users, modify the module.ini configuration file in the `$ICAROOT/config` directory. 
 
 Note: You do not need to add an entry to All\_Regions.ini for a configuration value to be read from module.ini, unless you want to allow other configuration files to override the value in module.ini. If an entry in All\_Regions.ini sets a specific value, the value in module.ini is not used.
   
-### Apply changes to new Receiver users
+### Apply changes to new Workspace app users
   
-If you want the changes to apply to all future new Receiver users, modify the configuration files in the `$ICAROOT/config` directory. For changes to apply to all connections, update wfclient.ini in this directory.  
+If you want the changes to apply to all future new Workspace app users, modify the configuration files in the `$ICAROOT/config` directory. For changes to apply to all connections, update wfclient.ini in this directory.  
 
 ### Apply changes to all connections for particular users 
  
@@ -71,21 +71,21 @@ For any given connection, the files are generally checked in the following order
 	* wfclient.ini  
 2.	module.ini. Values in this file are used if they have not been set in All\_Regions.ini, the connection's .ica file, or wfclient.ini but they are not restricted by entries in All\_Regions.ini.  
 
-If no value is found in any of these files, the default in the Citrix Receiver code is used.  
+If no value is found in any of these files, the default in the Citrix Workspace app code is used.  
   
 Note: There are exceptions to this order of precedence. For example, the code reads some values directly from wfclient.ini for security reasons, to ensure they are not set by a server.  
 
 ## User Interface  
 
-This topic guides you through the steps for customizing the Receiver user interface (UI) and Receiver connections. This might require you to modify configuration files, run command-line utilities with options that you specify, or develop plug-ins.
+This topic guides you through the steps for customizing the Workspace app user interface (UI) and Workspace app connections. This might require you to modify configuration files, run command-line utilities with options that you specify, or develop plug-ins.
   
-In addition to the information presented here, consult the User experience topics in the Receiver for Linux section on the Product Documentation site.  
+In addition to the information presented here, consult the User experience topics in the Workspace app for Linux section on the Product Documentation site.  
 
-Citrix provides a set of graphics assets that you can use to modify the Citrix Receiver UI in this release. To obtain these assets and a specification to help with the modifications, contact the Citrix Ready team.  
+Citrix provides a set of graphics assets that you can use to modify the Citrix Workspace app UI in this release. To obtain these assets and a specification to help with the modifications, contact the Citrix Ready team.  
 
-### Customize Citrix Receiver using storebrowse 
+### Customize Citrix Workspace app using storebrowse 
  
-You can customize Receiver by wrapping your own UI around the storebrowse command-line utility.  
+You can customize Workspace app by wrapping your own UI around the storebrowse command-line utility.  
 
 When used with Citrix StoreFront, storebrowse is equivalent to the deprecated pnabrowse utility. storebrowse takes options on the command line and returns results to its standard output, launches sessions, and so on.  
 
@@ -111,7 +111,7 @@ When connecting to a Program Neighborhood Agent (PNA) server, you can use storeb
 `$ICAROOT/config/storebrowse.conf` containing the required timeout in seconds followed by a new line. If the value zero is used, credentials are not stored for PNA sites (but the daemon process still runs).
 	* You can terminate the daemon process early by calling `storebrowse --killdaemon`.  
 * Long versions of each option are now available. This allows scripts to be more readable. For example, `--enumerate` can be specified instead of `-E`.  
-The `‑r` option (long option `‑‑icaroot`) now specifies the root directory of the Receiver installation.
+The `‑r` option (long option `‑‑icaroot`) now specifies the root directory of the Workspace app installation.
 
 ### Migrate to storebrowse 
  
@@ -126,9 +126,9 @@ If you are migrating from a pnabrowse environment to a storebrowse one, the foll
 	* Change a store's default gateway (using `-g`). 
 * Subscribing to an application or desktop gives users control and reduces administration:  
 	* Once users are connected to the store, they can subscribe to desktops and applications in it; administrators do not have to handle subscriptions  
-	* Subscriptions are stored locally, in Receiver, when connecting to a Program Neighborhood Agent server but remotely when connecting to a StoreFront server.  
+	* Subscriptions are stored locally, in Workspace app, when connecting to a Program Neighborhood Agent server but remotely when connecting to a StoreFront server.  
 * Logons are handled differently with storebrowse:  
-	* Authentication Manager prompts for credentials when necessary. Unlike pnabrowse, storebrowse lets Authentication Manager process logon prompts. Before you can use the `-U`, `-P`, and `-D` options, both the StoreFront server and the Citrix Receiver must be configured to allow the HTTP Basic authentication method. See S**torebrowse Classic Password Insertion for StoreFront** in the **Credential Insertion SDX**. Otherwise the client will prompt for credentials as normal. When the `-U`, `-P`, and `-D` options are used, the credentials are stored into Authentication Manager's Single Sign on (SSO) cache for subsequent authentications. 
+	* Authentication Manager prompts for credentials when necessary. Unlike pnabrowse, storebrowse lets Authentication Manager process logon prompts. Before you can use the `-U`, `-P`, and `-D` options, both the StoreFront server and the Citrix Workspace app must be configured to allow the HTTP Basic authentication method. See S**torebrowse Classic Password Insertion for StoreFront** in the **Credential Insertion SDX**. Otherwise the client will prompt for credentials as normal. When the `-U`, `-P`, and `-D` options are used, the credentials are stored into Authentication Manager's Single Sign on (SSO) cache for subsequent authentications. 
 
 ### Storebrowse examples  
 
@@ -264,15 +264,15 @@ storebrowse --enumerate --icons 48x https://my.example.net/ Citrix/Store/PNAgent
 
 ## Customize the self-service UI 
  
-You can customize the appearance of the self-service user interface (UI) in Citrix Receiver.  
+You can customize the appearance of the self-service user interface (UI) in Citrix Workspace app.  
 
 Note: For X1 connections the core self-selection interface is configurable on the server. For the now legacy green UI, it is still possible to modify it locally. 
  
-Because the legacy green UI is based on the Receiver for Web, you can use that component's customization interface to modify the UI. For example, you can rebrand the UI by creating a new skin based on an alternative CSS and your own images. 
+Because the legacy green UI is based on the Workspace app for Web, you can use that component's customization interface to modify the UI. For example, you can rebrand the UI by creating a new skin based on an alternative CSS and your own images. 
  
-Note: You cannot customize the logon dialog boxes in this way. Use the Receiver UI dialog library instead. For more information, see UI Dialog library.  
+Note: You cannot customize the logon dialog boxes in this way. Use the Workspace app UI dialog library instead. For more information, see UI Dialog library.  
 
-Typically, you customize the contents of the following subfolders of `$ICAROOT/site`. These contain the Receiver for Web code, which is rendered by the self-service UI as its interface:  
+Typically, you customize the contents of the following subfolders of `$ICAROOT/site`. These contain the Workspace app for Web code, which is rendered by the self-service UI as its interface:  
 
 * /contrib - Customizable JavaScript and CSS files, which are documented in the comments of each file  
 * /media - Icons and other graphics 
@@ -285,13 +285,13 @@ The following subfolders also exist, but you are unlikely to need to customize t
 
 To help modify the self-service UI, you can run the underlying web code in a standalone mode using a web browser. This lets you use standard web tools (for example, Firebug for Firefox) to inspect and modify the site. To run it in standalone mode, load the site `$ICAROOT/site/selfservice.html?standalone` in a browser. 
  
-For other information on customizations based on Receiver for Web, see [CTX134791](https://support.citrix.com/article/CTX134791) and [http://blogs.citrix.com/2012/06/06/customizing-receiver-for-web/](http://blogs.citrix.com/2012/06/06/customizing-receiver-for-web/).  
+For other information on customizations based on Workspace app for Web, see [CTX134791](https://support.citrix.com/article/CTX134791) and [http://blogs.citrix.com/2012/06/06/customizing-receiver-for-web/](http://blogs.citrix.com/2012/06/06/customizing-receiver-for-web/).  
 
 In addition to the self-selection UI, it is also possible to rebrand some other screens. The Shared User Mode logon screen, the Offline Error screen and the Loading Spinner screen can be customized by modifying the site rendered by `$ICAROOT/site/sum_screen/SharedUserMode.html`, `$ICAROOT/site/native/error.html`, and `$ICAROOT/site/native/loading.html` respectively. 
 
 ### Preferences  
 
-The Preferences UI in Citrix Receiver is implemented as a separate binary,  
+The Preferences UI in Citrix Workspace app is implemented as a separate binary,  
 `$ICAROOT/util/configmgr`, which edits the configuration files, and gets and sets values using storebrowse. For complex customizations, you can replace configmgr. 
  
 Note: Many of the configuration options were available in wfcmgr, which is no longer available. For more information on them than is provided here, consult an earlier version of this document.
@@ -304,7 +304,7 @@ The General page uses the `UseFullScreen=True/False` setting in the [Thinwire3.0
 --configselfservice ReconnectOnLogon=True/False
 ```
   
-The setting ReconnectOnLogon corresponds to the “Reconnect apps and desktop: When I start Receiver” preference, and determines whether the self-service UI tries to reconnect to all sessions, for a given store, immediately after logon to that store. 
+The setting ReconnectOnLogon corresponds to the “Reconnect apps and desktop: When I start Workspace app” preference, and determines whether the self-service UI tries to reconnect to all sessions, for a given store, immediately after logon to that store. 
 
 ``` 
 --configselfservice ReconnectOnLaunchOrRefresh=True/False
@@ -321,7 +321,7 @@ The Accounts page uses the following storebrowse commands to add, remove and edi
 --deletestore <store URL>   
 --storegateway <gateway name> 
 ```  
-If you have multiple stores, use the following command to define which one is displayed when the user first starts Receiver. 
+If you have multiple stores, use the following command to define which one is displayed when the user first starts Workspace app. 
 
 ``` 
 ./util/storebrowse --configselfservice 
@@ -350,24 +350,24 @@ The Flash page uses the `HDXFlashUseFlashRemoting` setting in the [WFClient] sec
 
 ### Customize connections using the Platform Optimization SDK
   
-Receiver connections can be customized by creating plug-ins to perform one or more of the following functions:
+Workspace app connections can be customized by creating plug-ins to perform one or more of the following functions:
   
 * Provide accelerated decoding of JPEG and H.264 data used to draw the session image  
 * Control the allocation of memory used to draw the session image  
 * Improve performance by taking control of the low-level drawing of the session  
 * Provide graphics output and user input services for OS environments that do not support X11  
 
-You can develop plug-ins for decoding independently of the other types listed, unless they also need to control memory allocation. To test any plug-ins that you develop, you may need to rename them and you must copy them to the Receiver installation directory.  
+You can develop plug-ins for decoding independently of the other types listed, unless they also need to control memory allocation. To test any plug-ins that you develop, you may need to rename them and you must copy them to the Workspace app installation directory.  
 
-Citrix Receiver supports additional plug-ins for accelerated audio and video codecs, but no SDK is provided for these in this release. Receiver can also be configured to use GStreamer for webcam and multimedia functions. These plug-ins are standard GStreamer components and are not covered in this document.  
+Citrix Workspace app supports additional plug-ins for accelerated audio and video codecs, but no SDK is provided for these in this release. Workspace app can also be configured to use GStreamer for webcam and multimedia functions. These plug-ins are standard GStreamer components and are not covered in this document.  
 
-Important:  Plug-in development in a non-X-Window system might require a specialized toolkit and customization of the UI dialog library in the Receiver.  
+Important:  Plug-in development in a non-X-Window system might require a specialized toolkit and customization of the UI dialog library in the Workspace app.  
 
-The following tables describe the shared library files that you should be aware of when developing plug-ins with the Platform Optimization SDK. If Receiver cannot locate or use a file, the fallback file (where available) is used instead.  
+The following tables describe the shared library files that you should be aware of when developing plug-ins with the Platform Optimization SDK. If Workspace app cannot locate or use a file, the fallback file (where available) is used instead.  
 
 | File  | Purpose  | Fallback file  | Notes  |
 |---|---|---|---|
-| ctxjpeg.so  |Citrix decoder for JPEG images  | libjpeg Version 6:  ctxjpeg\_fb.so libjpeg Version 8: ctxjpeg\_fb\_8.so  | The fallback decoder files are used only in ARM environments; the Receiver provides its own built-in fallback JPEG decoder in x86 environments. If you develop your own decoder, you must call it ctxjpeg.so. | 
+| ctxjpeg.so  |Citrix decoder for JPEG images  | libjpeg Version 6:  ctxjpeg\_fb.so libjpeg Version 8: ctxjpeg\_fb\_8.so  | The fallback decoder files are used only in ARM environments; the Workspace app provides its own built-in fallback JPEG decoder in x86 environments. If you develop your own decoder, you must call it ctxjpeg.so. | 
 | ctxh264.so  | Citrix decoder for H.264 images | ctxh264\_fb.so  | ctxh264.so decodes H.264 graphics only; HDX MediaStream for Windows Media and HDX. MediaStream for Flash use different mechanisms to display H.264 video and movie content. | 
 | KVMEPlugin. so | Memory allocation  | SOCX11plugin\_COMPAT.so | The binary fallback file is only provided for ARM deployments. For x86 deployments, the source is available and can be compiled.  |
 
@@ -417,7 +417,7 @@ The following information may be useful if you want to hardware accelerating JPE
   
 Hardware-accelerated plug-ins for H.264 or JPEG decoding may need to allocate memory buffers with special characteristics, for example using physically contiguous pages. A single plug-in component, KVMEPlugin.so, is used for both standard memory allocation and for drawing the session image. If you are using the plug-in for memory allocation, you must supply only two functions.  
 
-The header file for memory allocation plug-ins is mainloop.h. The two entry points that must be implemented are `special\_allocate()` and `special\_free()`. The example code is in the allocation\_sample directory. Before using this code as a model for your own plug-in, pay careful attention to the comments in the code. Parts of it are present only for backward compatibility with decoder plug-ins that were developed for obsolete versions of Citrix Receiver.
+The header file for memory allocation plug-ins is mainloop.h. The two entry points that must be implemented are `special\_allocate()` and `special\_free()`. The example code is in the allocation\_sample directory. Before using this code as a model for your own plug-in, pay careful attention to the comments in the code. Parts of it are present only for backward compatibility with decoder plug-ins that were developed for obsolete versions of Citrix Workspace app.
 
 ### Plug-ins for faster drawing in X11 environments
   
@@ -427,7 +427,7 @@ The example code in the allocation\_sample directory includes an implementation 
 
 ### Plug-ins for non-X11 environments  
 
-The Platform Optimization SDK includes a separate version of the Receiver engine called wfica\_for\_plugins. This is not linked with any X11 libraries. The program requires a version of KVMEPlugin.so that provides video output, mouse and keyboard input, and timer and event detection services. The following features of the X11 version are not yet available in the separate version: clipboard, seamless windows, multimedia and Flash support.  
+The Platform Optimization SDK includes a separate version of the Workspace app engine called wfica\_for\_plugins. This is not linked with any X11 libraries. The program requires a version of KVMEPlugin.so that provides video output, mouse and keyboard input, and timer and event detection services. The following features of the X11 version are not yet available in the separate version: clipboard, seamless windows, multimedia and Flash support.  
 
 Two example plug-in implementations are included: 
  
@@ -440,15 +440,15 @@ Usually, X11 and frame buffer graphics are supported. To use frame buffer graphi
 
 ### UI Dialog library  
 
-For alternative windowing systems to X Windows and their toolkits, you can develop customized dialogs using the Receiver for Linux UI dialog library described in this topic. The library is a C interface that can represent dialogs containing a selection of widgets: labels, text boxes, check boxes, radio buttons, combo boxes, multi-select combo boxes, buttons, expanders, hyperlink, scrolled view, selection table, and button box. The library is loaded as a shared object file (UIDialogLib.so). 
+For alternative windowing systems to X Windows and their toolkits, you can develop customized dialogs using the Workspace app for Linux UI dialog library described in this topic. The library is a C interface that can represent dialogs containing a selection of widgets: labels, text boxes, check boxes, radio buttons, combo boxes, multi-select combo boxes, buttons, expanders, hyperlink, scrolled view, selection table, and button box. The library is loaded as a shared object file (UIDialogLib.so). 
  
-The UI dialog library is used for most of the dialogs that are displayed by Receiver for Linux processes, including the X11-based wfica. The processes storebrowse, AuthManager, PrimaryAuthManager, and ServiceRecord use it for their entire user interface (UI). By reimplementing the library, you can replace the UI of these essential processes with a toolkit of your choosing. Except for dialogs, the remaining processes (self-service, configmgr, and X11 wfica binaries) require GTK+ for other aspects of their UI, and therefore cannot be used with a different implementation of the library than the GTK+ implementation provided with Receiver.
+The UI dialog library is used for most of the dialogs that are displayed by Workspace app for Linux processes, including the X11-based wfica. The processes storebrowse, AuthManager, PrimaryAuthManager, and ServiceRecord use it for their entire user interface (UI). By reimplementing the library, you can replace the UI of these essential processes with a toolkit of your choosing. Except for dialogs, the remaining processes (self-service, configmgr, and X11 wfica binaries) require GTK+ for other aspects of their UI, and therefore cannot be used with a different implementation of the library than the GTK+ implementation provided with Workspace app.
   
-However, all of their functionality is available in the storebrowse command-line utility and the configuration files. The graphic on the following page represents the library's architecture and use by Receiver components. Note that two further utilities, Connection Center and xcapture are completely dependent on X11 and are not shown on this graphic. 
+However, all of their functionality is available in the storebrowse command-line utility and the configuration files. The graphic on the following page represents the library's architecture and use by Workspace app components. Note that two further utilities, Connection Center and xcapture are completely dependent on X11 and are not shown on this graphic. 
  
 For further documentation and examples to aid implementation of the API, refer to the Platform Optimization SDK. 
 
-![Library architecture and their use by Receiver components](./library-architecture.png) 
+![Library architecture and their use by Workspace app components](./library-architecture.png) 
 
 ### Security
   
@@ -456,9 +456,9 @@ For further documentation and examples to aid implementation of the API, refer t
 
 StoreFront sites use the HTTPS protocol. This is non-configurable.
 
-Citrix Receiver recognizes a certificate as being from the correct certificate authority if a root certificate is installed in the `$ICAROOT/keystore/cacerts` directory and `$ICAROOT/keystore/intcerts` contains any intermediate certificates that are not provided by the server.
+Citrix Workspace app recognizes a certificate as being from the correct certificate authority if a root certificate is installed in the `$ICAROOT/keystore/cacerts` directory and `$ICAROOT/keystore/intcerts` contains any intermediate certificates that are not provided by the server.
  
-To use SSL or TLS, you need a root certificate on the user device that can verify the signature of the Certificate Authority on the server certificate. By default, Receiver supports the following certificates.  
+To use SSL or TLS, you need a root certificate on the user device that can verify the signature of the Certificate Authority on the server certificate. By default, Workspace app supports the following certificates.  
 
 | Certificate | Issuing Authority  |
 |---|---|
@@ -472,9 +472,9 @@ To use SSL or TLS, you need a root certificate on the user device that can verif
 
 You are not required to obtain and install root certificates on the user device to use the certificates from these Certificate Authorities. However, if you choose to use a different Certificate Authority, you must obtain and install a root certificate from the Certificate Authority on each user device.  
 
-Important: Citrix Receiver does not support keys of more than 4096 bits. You must ensure that the Certificate Authority root and intermediate certificates, and your server certificates, are a maximum of 4096 bits long.  
+Important: Citrix Workspace app does not support keys of more than 4096 bits. You must ensure that the Certificate Authority root and intermediate certificates, and your server certificates, are a maximum of 4096 bits long.  
 
-**Note**: Citrix Receiver for Linux 13.0 uses c\_rehash from the local device. 13.1 onwards uses the ctx\_rehash tool as described in the following steps. 
+**Note**: Citrix Workspace app for Linux 13.0 uses c\_rehash from the local device. 13.1 onwards uses the ctx\_rehash tool as described in the following steps. 
 
 #### Use a root certificate  
 
@@ -497,20 +497,20 @@ If your StoreFront server is not able to provide the intermediate certificates t
 
 #### Smart Cards  
 
-To configure smart card support in Receiver for Linux, you must have the StoreFront services site configured to allow smart card authentication. 
+To configure smart card support in Workspace app for Linux, you must have the StoreFront services site configured to allow smart card authentication. 
  
 **Note**: Smart cards are not supported with the XenApp Services site for Web Interface configurations (formerly known as PNAgent), or with the "legacy PNAgent" site that can be provided by a StoreFront server.  
 
-Citrix Receiver for Linux supports smart card readers that are compatible with PCSC-Lite and smart cards with PKCS#11 drivers for the appropriate Linux platform.
+Citrix Workspace app for Linux supports smart card readers that are compatible with PCSC-Lite and smart cards with PKCS#11 drivers for the appropriate Linux platform.
    
-Citrix Receiver loads the OpenSC libraries automatically. Installation of the libraries allows the use of OpenSC supported cards without further configuration. If this fails, or you require a different PKCS#11 driver to ensure Citrix Receiver locates the PKCS#11 driver, store the location in a configuration file using the following steps.  
+Citrix Workspace app loads the OpenSC libraries automatically. Installation of the libraries allows the use of OpenSC supported cards without further configuration. If this fails, or you require a different PKCS#11 driver to ensure Citrix Workspace app locates the PKCS#11 driver, store the location in a configuration file using the following steps.  
 
 1.	Locate the configuration file: `$ICAROOT/config/AuthManConfig.xml`.  
 2.	Locate the line `<key>PKCS11module</key>` and add the driver location to the element `<value>` immediately following the line.  
 
-**Note**: If you enter a file name for the driver location, Citrix Receiver finds that file in the `$ICAROOT/PKCS#11` directory. Alternatively, you can use an absolute path beginning with "/".  
+**Note**: If you enter a file name for the driver location, Citrix Workspace app finds that file in the `$ICAROOT/PKCS#11` directory. Alternatively, you can use an absolute path beginning with "/".  
 
-To configure the behavior of the Receiver for Linux on smart card removal, update the `SmartCardRemovalAction` in the configuration file using the following steps: 
+To configure the behavior of the Workspace app for Linux on smart card removal, update the `SmartCardRemovalAction` in the configuration file using the following steps: 
 
 1.	Locate the configuration file: `$ICAROOT/config/AuthManConfig.xml`.  
 2.	Locate the line `<key>SmartCardRemovalAction</key>` and add `noaction` or `forcelogoff` to the `<value>` element immediately following the line. 
@@ -521,7 +521,7 @@ The 'forcelogoff' action clears all credentials and tokens within StoreFront on 
 
 For more information about configuring smart card support on your servers, see the XenApp and XenDesktop documentation on the Product Documentation site. 
  
-Once smart card support is enabled for both the server and Receiver, you can use smart cards for the following purposes:  
+Once smart card support is enabled for both the server and Workspace app, you can use smart cards for the following purposes:  
 
 * Smart card logon authentication. Use smart cards to authenticate users to Citrix XenApp servers.  
 * Smart card application support. Enable smart card-aware published applications to access local smart card devices.  
@@ -539,7 +539,7 @@ Smart card support has the following prerequisites:
 
 ### Multimedia  
 
-This section contains information on customizing the way that Receiver processes:  
+This section contains information on customizing the way that Workspace app processes:  
 
 * Graphics  
 * Video  
@@ -547,15 +547,15 @@ This section contains information on customizing the way that Receiver processes
 
 #### Graphics 
  
-XenDesktop and XenApp are based on different technologies, send different protocols to Receiver, and therefore require different configurations. Citrix recommends that you test Receiver with both of these products while you develop your solution.  
+XenDesktop and XenApp are based on different technologies, send different protocols to Workspace app, and therefore require different configurations. Citrix recommends that you test Workspace app with both of these products while you develop your solution.  
 
 #### Configure H.264 support 
  
-Receiver supports the display of H.264 graphics, including HDX 3D Pro graphics, that are served by XenDesktop 7. This support uses the deep compression codec feature, which is enabled by default. The feature provides better performance of rich and professional graphics applications on WAN networks compared with the JPEG codec.
+Workspace app supports the display of H.264 graphics, including HDX 3D Pro graphics, that are served by XenDesktop 7. This support uses the deep compression codec feature, which is enabled by default. The feature provides better performance of rich and professional graphics applications on WAN networks compared with the JPEG codec.
   
 Follow the instructions in this topic to disable the feature (and process graphics using the JPEG codec instead). You can also disable text tracking while still enabling deep compression codec support. This helps to reduce CPU costs while processing graphics that include complex images but relatively small amounts of text or non-critical text.  
 
-**Important**: To configure this feature, do not use any lossless setting in the XenDesktop Visual quality policy. If you do, H.264 encoding is disabled on the server and does not work in Receiver.  
+**Important**: To configure this feature, do not use any lossless setting in the XenDesktop Visual quality policy. If you do, H.264 encoding is disabled on the server and does not work in Workspace app.  
 
 #### To disable deep compression codec support  
 
@@ -567,7 +567,7 @@ With deep compression codec support enabled, in wfclient.ini set TextTrackingEna
 
 #### To disable small frames support  
 
-The small frames feature allows efficient processing when only a small portion of the screen changes over time (for example, when a cursor flashes on an otherwise stable background). This procedure only works with XenDesktop 7.1 onwards and overrides the equivalent setting in the Citrix Receiver for Linux SDK.  
+The small frames feature allows efficient processing when only a small portion of the screen changes over time (for example, when a cursor flashes on an otherwise stable background). This procedure only works with XenDesktop 7.1 onwards and overrides the equivalent setting in the Citrix Workspace app for Linux SDK.  
 
 In wfclient.ini set SmallFramesEnabled to False.  
 
@@ -577,13 +577,13 @@ Using the Platform Optimization SDK, you can improve graphics performance (by ac
 
 #### Advanced graphic configurations
   
-You can adjust how Receiver is configured to process graphics that are rendered on the server. Typically, these are bitmaps that are encoded using the JPEG protocol.  
+You can adjust how Workspace app is configured to process graphics that are rendered on the server. Typically, these are bitmaps that are encoded using the JPEG protocol.  
 
 #### Input and output color formats  
 
-Most JPEGs are sub-sampled in YUV 4:2:0 format. However, the server can also send images in 4:4:4 format. Citrix Receiver expects ctxjpeg.so to output decoded JPEGs in 32-bit BGRX format, with the Blue component being the most significant eight bits. 
+Most JPEGs are sub-sampled in YUV 4:2:0 format. However, the server can also send images in 4:4:4 format. Citrix Workspace app expects ctxjpeg.so to output decoded JPEGs in 32-bit BGRX format, with the Blue component being the most significant eight bits. 
 
-The protocol used by Receiver does not restrict JPEG types, with the following exceptions:  
+The protocol used by Workspace app does not restrict JPEG types, with the following exceptions:  
 
 * The protocol does not support JPEG2000  
 * The protocol does not use lossless JPEG  
@@ -608,7 +608,7 @@ If you develop a custom allocation mechanism, it replaces shared memory. A sampl
 
 #### Sending decoded bitmaps to Xserver  
 
-You can hook the LVB allocation (source image data) function. When a frame is ready to be displayed, Citrix Receiver uses XShmPutImage to copy the LVB to screen. You may also need to hook the XShmPutImage function. If this is not convenient, alternative solutions (for example, using a non-atomic display) are available but they might degrade performance.  
+You can hook the LVB allocation (source image data) function. When a frame is ready to be displayed, Citrix Workspace app uses XShmPutImage to copy the LVB to screen. You may also need to hook the XShmPutImage function. If this is not convenient, alternative solutions (for example, using a non-atomic display) are available but they might degrade performance.  
 
 #### Advantages of CTXJPEG abstraction 
  
@@ -616,7 +616,7 @@ In addition to hardware acceleration, abstracting CTXJPEG has these advantages:
 
 * You can fully optimize JPEG decoding.  
 * You can allocate *special memory* for decoding purposes, which eliminates unnecessary memory copies and increases performance.  
-* You can save CPU. If you do not implement CTXJPEG, Receiver uses CTXJPEG\_FB which in turn uses libjpeg, or libjpeg-turbo if NEON is available, to decode bitmaps. This means that JPEGs are decoded using software, which can be CPU intensive and can reduce performance (unless you provide API-compatible hardware replacements for either library). 
+* You can save CPU. If you do not implement CTXJPEG, Workspace app uses CTXJPEG\_FB which in turn uses libjpeg, or libjpeg-turbo if NEON is available, to decode bitmaps. This means that JPEGs are decoded using software, which can be CPU intensive and can reduce performance (unless you provide API-compatible hardware replacements for either library). 
 
 ### Video 
  
@@ -637,7 +637,7 @@ The requirements for this feature are as follows:
 * Flash videos with resolutions less than 250 pixels in either the x or y dimension are rendered on the server by design.  
 * In some cases, HDX MediaStream Flash Redirection might only work when gliblc 2.10 is installed on the user device.  
 
-Citrix Receiver searches in the following locations for the Citrix Flash plug-in, libflashplayer.so:
+Citrix Workspace app searches in the following locations for the Citrix Flash plug-in, libflashplayer.so:
 
 * /usr/lib/browser-plugins/  
 * /usr/lib/flashplugin-installer/  
@@ -649,7 +649,7 @@ Citrix Receiver searches in the following locations for the Citrix Flash plug-in
 * /usr/lib/flashplugin-nonfree/  
 * $ICAROOT 
 
-If the plug-in is found in multiple locations, the plug-in with the latest version number is used by the HDX MediaStream Flash Redirection feature. If the plug-in is present in a different location, you can create a link to the location at $ICAROOT (the directory where Receiver for Linux is installed by default) using this command:
+If the plug-in is found in multiple locations, the plug-in with the latest version number is used by the HDX MediaStream Flash Redirection feature. If the plug-in is present in a different location, you can create a link to the location at $ICAROOT (the directory where Workspace app for Linux is installed by default) using this command:
 
 ```  
 ln -s <target flash plugin location> libflashplayer.so  
@@ -681,7 +681,7 @@ Output similar to the following should be displayed:
 
 #### Troubleshoot your Flash plug-in  
 
-You can collect trace logs to help debug your Flash plug-in. Run the following command and then test the feature using Citrix Receiver:  
+You can collect trace logs to help debug your Flash plug-in. Run the following command and then test the feature using Citrix Workspace app:  
 
 ```
 cat > $HOME/HDXFlash.ini <<EOM [Tracing]   
@@ -703,7 +703,7 @@ For more information on troubleshooting Flash, refer to [CTX134786](http://suppo
 
 #### HDX MediaStream Windows Media Redirection  
 
-The HDX MediaStream Windows Media Redirection feature redirects audio and video content from the Microsoft® Media Foundation platform on the server to a local media player on the user device. Citrix Receiver uses a GStreamer pipeline to run streamed multimedia content on the device.  
+The HDX MediaStream Windows Media Redirection feature redirects audio and video content from the Microsoft® Media Foundation platform on the server to a local media player on the user device. Citrix Workspace app uses a GStreamer pipeline to run streamed multimedia content on the device.  
 
 If a video codec is not available on the device or is not supported by HDX MediaStream Windows Media Redirection, it is processed by the server's media player. In these cases, video is delivered as serverrendered bitmaps through the graphics virtual channel.  
 
@@ -715,7 +715,7 @@ If any of the following are missing, rendering takes place on the server:
 * On the user device - GStreamer components  
 * On the user device - Appropriate entries in MediaStreamingConfig.tbl  
 
-HDX MediaStream Windows Media Redirection supports flow control and frame dropping because Receiver uses the GStreamer flow control mechanism for connections to XenDesktop.  
+HDX MediaStream Windows Media Redirection supports flow control and frame dropping because Workspace app uses the GStreamer flow control mechanism for connections to XenDesktop.  
 
 #### Supported media players and formats
   
@@ -730,7 +730,7 @@ The following settings are located in module.ini in this release.
 | Item  | Description  |
 |---|---|
 | SpeedScreenMMAClosePlayerOnEOS=Boolean | Closes gst\_play at the end of a media clip. This ensures only one gst\_play process runs at a time. Default=False.  |
-| SpeedScreenMMAGstPlayKillAtExit=Boolean  | Lets Receiver stop any gst\_play processes that do not exit within a specified timeout period. Default=True.  |
+| SpeedScreenMMAGstPlayKillAtExit=Boolean  | Lets Workspace app stop any gst\_play processes that do not exit within a specified timeout period. Default=True.  |
 | SpeedScreenMMAGstPlayExitTimeout=integer  | Period of time, in seconds, allowed for gst\_play processes to exit before being terminated. Default=20.  |
 | SpeedScreenMMARebaseTimestampsOnSeek=Boolean | Enables rebasing of timestamps to a positive value following seek. Default=True.  |
 | SpeedScreenMMAStopOverlayHandlingEvents=Boolean | If set to False, fixes potential issues with videos not playing in the correct location or at the correct size, not resizing properly, or with the video window remaining black, but causes an issue where, after the mouse pointer has disappeared in full-screen Windows Media Player, it does not return when the mouse is moved. If set to True, corrects the mouse-pointer issue. Default=False. |
@@ -751,13 +751,13 @@ For information on troubleshooting this feature, see [CTX104912](http://support.
 
 HDX RealTime Webcam Video Compression is the default mechanism for video conferencing applications. The video input is provided by the webcam to the user device and the application runs on the server. This feature lets webcam input on the device communicate with the application on the server.  
 
-You can specify how Receiver encodes webcam data. Both H.264 and Theora codecs are supported. By default, Theora encoding is enabled.
+You can specify how Workspace app encodes webcam data. Both H.264 and Theora codecs are supported. By default, Theora encoding is enabled.
   
 **Important**: To ensure this feature works, install any appropriate webcam drivers on the user device.  
 
 #### Theora encoding 
  
-Citrix Receiver uses a GStreamer element to encode webcam output on the user device using the Theora codec. This is theoraenc and is included in GStreamer's Base Plugins collection.  
+Citrix Workspace app uses a GStreamer element to encode webcam output on the user device using the Theora codec. This is theoraenc and is included in GStreamer's Base Plugins collection.  
 
 The following GStreamer pipeline is used for Theora encoding with HDX RealTime Webcam Video Compression: v4l2src > ffmpegcolorspace > videoscale > capsfilter > theoraenc > appsink  
 
@@ -765,12 +765,12 @@ By default, the resolution for the webcam output window is set to CIF/SIF(625): 
 
 #### H.264 encoding  
 
-Citrix Receiver encodes webcam output in the H.264 format by choosing a pipeline in this order:  
+Citrix Workspace app encodes webcam output in the H.264 format by choosing a pipeline in this order:  
 
-1.	HDXH264CaptureBin > appsink - Receiver uses this option if you create and configure an HDXH264CaptureBin plug-in that is responsible for capturing and transcoding the webcam data. You might want to do so if the performance of GStreamer is unacceptable or if your chip has video acceleration capabilities.  
-2.	appsrc > appsink - Receiver uses this option if the webcam supports H.264 and outputs H.264 data directly. It also requires HDXH264EnableNative to be set.  
-3.	v4l2src > encodebin > appsink - Receiver uses this option if the webcam produces uncompressed output. The GStreamer elements that process this include v4l2src, which obtains data from the webcam's video driver, and encodebin, which constructs a GStreamer pipeline for the H.264 encoder element that is present on the user device.  
-4.	v4l2src > jpegdec > encodebin > appsink - Receiver uses this option if the webcam produces JPEG output rather than H.264 or another uncompressed format. This pipeline is not very efficient because it adds a decode step, jpegdec. 
+1.	HDXH264CaptureBin > appsink - Workspace app uses this option if you create and configure an HDXH264CaptureBin plug-in that is responsible for capturing and transcoding the webcam data. You might want to do so if the performance of GStreamer is unacceptable or if your chip has video acceleration capabilities.  
+2.	appsrc > appsink - Workspace app uses this option if the webcam supports H.264 and outputs H.264 data directly. It also requires HDXH264EnableNative to be set.  
+3.	v4l2src > encodebin > appsink - Workspace app uses this option if the webcam produces uncompressed output. The GStreamer elements that process this include v4l2src, which obtains data from the webcam's video driver, and encodebin, which constructs a GStreamer pipeline for the H.264 encoder element that is present on the user device.  
+4.	v4l2src > jpegdec > encodebin > appsink - Workspace app uses this option if the webcam produces JPEG output rather than H.264 or another uncompressed format. This pipeline is not very efficient because it adds a decode step, jpegdec. 
 
 In each case, GStreamer Version 0.10.31 or any later release in the 0.10 series must be available on the user device. 
  
@@ -854,13 +854,13 @@ gst_read -b 20
 #### Apply custom properties to GStreamer elements for H.264 webcam support  
 
 In some configurations, you might need to apply custom properties to elements in the  
-GStreamer pipeline. In these cases, Receiver tries to load a GStreamer preset called `Profile Citrix HDXH264WebCam` from .prs files that are stored in `$ICAROOT/config/gstpresets` (for GStreamer 0.10.36 or later) or in the default GStreamer location (for earlier versions). 
+GStreamer pipeline. In these cases, Workspace app tries to load a GStreamer preset called `Profile Citrix HDXH264WebCam` from .prs files that are stored in `$ICAROOT/config/gstpresets` (for GStreamer 0.10.36 or later) or in the default GStreamer location (for earlier versions). 
  
 For details of the .prs files' format, refer to your GStreamer documentation. 
 
 #### Webcams with native H.264 support 
  
-Because of the high bandwidth that is generated with the default settings on some webcams, native H.264 is turned off by default in Citrix Receiver. To enable support, configure the following setting in wfclient.ini: 
+Because of the high bandwidth that is generated with the default settings on some webcams, native H.264 is turned off by default in Citrix Workspace app. To enable support, configure the following setting in wfclient.ini: 
 
 ``` 
 HDXH264EnableNative=True  
@@ -876,11 +876,11 @@ Audio output consists of any audio that is not redirected to the user device usi
 
 #### Configure Speex or Vorbis 
  
-If you are using standard audio (not HDX MediaStream Windows Media or HDX MediaStream for Flash), you can configure Citrix Receiver to process audio data using either the Speex or Vorbis codec. Speex is designed for speech audio data. Vorbis is designed for other types of audio data. Citrix Receiver uses the SPEEX.DLL library file to process Speex data and VORBIS.DLL to process Vorbis data.  
+If you are using standard audio (not HDX MediaStream Windows Media or HDX MediaStream for Flash), you can configure Citrix Workspace app to process audio data using either the Speex or Vorbis codec. Speex is designed for speech audio data. Vorbis is designed for other types of audio data. Citrix Workspace app uses the SPEEX.DLL library file to process Speex data and VORBIS.DLL to process Vorbis data.  
 
-When connections to virtual resources are negotiated (after installation during session start up), the server negotiates the codec to use with Citrix Receiver. The codec that is chosen depends on your configuration of the AudioBandwidthLimit setting. This specifies the audio bandwidth limit and, by extension, the audio quality for the connection.
+When connections to virtual resources are negotiated (after installation during session start up), the server negotiates the codec to use with Citrix Workspace app. The codec that is chosen depends on your configuration of the AudioBandwidthLimit setting. This specifies the audio bandwidth limit and, by extension, the audio quality for the connection.
 
-#### To configure Receiver to use Speex or Vorbis  
+#### To configure Workspace app to use Speex or Vorbis  
 Set AudioBandwidthLimit in the [WFClient] section of the appropriate.ini file or in the ICA file as follows:  
 
 * 0 specifies the bandwidth as high and means the Vorbis codec is used  
@@ -889,7 +889,7 @@ Set AudioBandwidthLimit in the [WFClient] section of the appropriate.ini file or
 
 #### Which audio feature is used at runtime
   
-The following diagram illustrates how different audio features are used at runtime. Receiver chooses the feature based on the audio application that runs on the user device, and whether the correct codecs and plug-ins are available on it. Standard audio is used as a fallback if these are missing.  
+The following diagram illustrates how different audio features are used at runtime. Workspace app chooses the feature based on the audio application that runs on the user device, and whether the correct codecs and plug-ins are available on it. Standard audio is used as a fallback if these are missing.  
  
 ![How different audio features are used at runtime](./audio-features-flow.png)
 
@@ -916,44 +916,44 @@ To test whether audio is being rendered on the server, run an audio file in anot
 
 #### Configure audio latency correction 
  
-If you have an Advanced Linux Sound Architecture (ALSA) implementation of VDCAM, you can control how audio latency in Receiver connections is processed. The audio redirection feature can detect periods of client overload and any delays in audio output. When client overload is detected, audio temporarily runs at a higher latency to increase the smoothness of the audio output. In periods of client stability, any excess latency is discarded to improve synchronization.  
+If you have an Advanced Linux Sound Architecture (ALSA) implementation of VDCAM, you can control how audio latency in Workspace app connections is processed. The audio redirection feature can detect periods of client overload and any delays in audio output. When client overload is detected, audio temporarily runs at a higher latency to increase the smoothness of the audio output. In periods of client stability, any excess latency is discarded to improve synchronization.  
 
 In the [ClientAudio] section of module.ini, enable the feature by setting  
 AudioLatencyControlEnabled to True. The default setting is recommended so this is sufficient to enable the feature.  
 
 ##### Advanced settings:  
-The audio latency control aims for latency to stay in the range above the lower band set by PlaybackDelayThresh and below AudioMaxLatency under normal conditions. In situations where audio throughput is insufficient the latency is raised by AudioTempLatencyBoost above the lower band. This boost provides more buffering to allow smooth although slightly more delayed audio. Once the period of insufficient audio throughput has ended the latency is corrected back to the normal levels. The last setting is the AudioLatencyCorrectionInterval which defines how often in milliseconds Receiver tries to correct the latency.  
+The audio latency control aims for latency to stay in the range above the lower band set by PlaybackDelayThresh and below AudioMaxLatency under normal conditions. In situations where audio throughput is insufficient the latency is raised by AudioTempLatencyBoost above the lower band. This boost provides more buffering to allow smooth although slightly more delayed audio. Once the period of insufficient audio throughput has ended the latency is corrected back to the normal levels. The last setting is the AudioLatencyCorrectionInterval which defines how often in milliseconds Workspace app tries to correct the latency.  
 
-* PlaybackDelayThresh, specify the initial level of output buffering in milliseconds. Receiver tries to maintain this level of buffering throughout a session's duration. (Default 150ms).  
-* AudioMaxLatency, specify the maximum latency in milliseconds to allow before Receiver attempts to discard audio data. (Default 300ms).  
+* PlaybackDelayThresh, specify the initial level of output buffering in milliseconds. Workspace app tries to maintain this level of buffering throughout a session's duration. (Default 150ms).  
+* AudioMaxLatency, specify the maximum latency in milliseconds to allow before Workspace app attempts to discard audio data. (Default 300ms).  
 * AudioTempLatencyBoost, sets the amount by which the higher latency band is above the lower. (Default 300ms)  
 * AudioLatencyCorrectionInterval, specify how often we want to attempt to correct the latency in milliseconds. (Default 300ms) 
 
 ### Browse content redirection
    
-Redirects the contents of a web browser to a client device and creates a corresponding browser embedded within Citrix Receiver. This feature offloads network usage, page processing, and graphics rendering to the endpoint. Doing so improves the user experience when browsing demanding webpages, especially webpages that incorporate HTML5 or Flash video. Browser content redirection is supported on the x86, x64, and ARM hard float (armhf) platforms.
+Redirects the contents of a web browser to a client device and creates a corresponding browser embedded within Citrix Workspace app. This feature offloads network usage, page processing, and graphics rendering to the endpoint. Doing so improves the user experience when browsing demanding webpages, especially webpages that incorporate HTML5 or Flash video. Browser content redirection is supported on the x86, x64, and ARM hard float (armhf) platforms.
 
 For more information, see [Browse content redirection](https://docs.citrix.com/en-us/xenapp-and-xendesktop/current-release/multimedia/browser-content-redirection.html) and [Browser content redirection policy settings](https://docs.citrix.com/en-us/xenapp-and-xendesktop/current-release/policies/reference/ica-policy-settings/browser-content-redirection-policy-settings.html) in XenApp and XenDesktop documentation.  
 
 ### Better logging
 
-The retail build of standard Citrix Receiver for Linux can now generate and send logs through syslog. This feature allows the handling of messages to be controlled based on their level and origin. Retail logging support is being introduced for the Connection Sequence (WD, PD, TD, Proxy) and Printing components.  Retail logging support is also being introduced for the Connection Center, Graphics (thinwire), and End User Experience Monitoring (EUEM) modules. This helps users troubleshoot, and - in cases of complicated issues - facilitate the support team's job by using the detailed logs available. The log output is similar to the current debugging mode.
+The retail build of standard Citrix Workspace app for Linux can now generate and send logs through syslog. This feature allows the handling of messages to be controlled based on their level and origin. Retail logging support is being introduced for the Connection Sequence (WD, PD, TD, Proxy) and Printing components.  Retail logging support is also being introduced for the Connection Center, Graphics (thinwire), and End User Experience Monitoring (EUEM) modules. This helps users troubleshoot, and - in cases of complicated issues - facilitate the support team's job by using the detailed logs available. The log output is similar to the current debugging mode.
  
-The logging parameters, log level, log file, log method (sequence, multi-sequential, cycle), and the module to be logged can be configured using configuration files. For information about enabling retail logging, see [Citrix Receiver for Linux](https://docs.citrix.com/en-us/receiver/linux.html) Product Documentation. 
+The logging parameters, log level, log file, log method (sequence, multi-sequential, cycle), and the module to be logged can be configured using configuration files. For information about enabling retail logging, see [Citrix Workspace app for Linux](https://docs.citrix.com/en-us/receiver/linux.html) Product Documentation. 
 
 ### Cryptographic update
 
-This feature is an important change to the secure communication protocol. Cipher suites with the prefix TLS_RSA_ do not offer forward secrecy. These cipher suites are now generally deprecated by the industry. However, to support backward compatibility with older versions of XenApp and XenDesktop, Receiver for Linux has an option to enable these cipher suites. For more information about configuring deprecated cipher suites, see the Secure section in the [Citrix Receiver for Linux](https://docs.citrix.com/en-us/receiver/linux.html) Product Documentation.
+This feature is an important change to the secure communication protocol. Cipher suites with the prefix TLS_RSA_ do not offer forward secrecy. These cipher suites are now generally deprecated by the industry. However, to support backward compatibility with older versions of XenApp and XenDesktop, Workspace app for Linux has an option to enable these cipher suites. For more information about configuring deprecated cipher suites, see the Secure section in the [Citrix Workspace app for Linux](https://docs.citrix.com/en-us/receiver/linux.html) Product Documentation.
 
 ### Multi-monitor layout persistence
 
-This feature lets you save the position of a desktop session, and then relaunch it in the same position. This feature avoids the overhead of repositioning sessions at every launch. It empowers you to dynamically adjust and save the layout information across endpoints, thus optimizing the end user experience in multi-monitor environments. For more information about configuring multi-monitor layout persistence, see the Optimize section in the [Citrix Receiver for Linux](https://docs.citrix.com/en-us/receiver/linux.html) Product Documentation.
+This feature lets you save the position of a desktop session, and then relaunch it in the same position. This feature avoids the overhead of repositioning sessions at every launch. It empowers you to dynamically adjust and save the layout information across endpoints, thus optimizing the end user experience in multi-monitor environments. For more information about configuring multi-monitor layout persistence, see the Optimize section in the [Citrix Workspace app for Linux](https://docs.citrix.com/en-us/receiver/linux.html) Product Documentation.
 
 ### Performance  
 
 #### Memory  
 
-In environments where limited memory is a problem, you can minimize the amount of memory used by Citrix Receiver with the following parameters.  
+In environments where limited memory is a problem, you can minimize the amount of memory used by Citrix Workspace app with the following parameters.  
 
 | Item | Description |
 |---|---|
@@ -965,23 +965,23 @@ You can also control the allocation of memory used to draw the session image by 
 
 ####Kiosk mode  
 
-You can configure a user device to start up in kiosk mode, in which Receiver starts automatically in full screen mode when a user logs on to the device. This can be useful if users do not need to interact with the local operating system (OS) or any local applications. In this access scenario, Citrix Receiver effectively replaces the local OS, allowing the user to interact with virtual desktops and applications as if they were local. Together with the clearing of caches and credentials that Citrix Receiver performs, this lets you to use workstations as thin clients.  
+You can configure a user device to start up in kiosk mode, in which Workspace app starts automatically in full screen mode when a user logs on to the device. This can be useful if users do not need to interact with the local operating system (OS) or any local applications. In this access scenario, Citrix Workspace app effectively replaces the local OS, allowing the user to interact with virtual desktops and applications as if they were local. Together with the clearing of caches and credentials that Citrix Workspace app performs, this lets you to use workstations as thin clients.  
 
 The user scenario in kiosk mode is:  
 
 1.	The user starts their terminal.
 2. A startup UI is displayed with just one object, a Log On button.  
 2.	The user clicks the button and is prompted for credentials.  
-3.	Citrix Receiver starts the self-service UI in full-screen mode.  
+3.	Citrix Workspace app starts the self-service UI in full-screen mode.  
 4.	The user starts one or more applications.  
 5.	When they have finished working at the terminal, the user clicks Preferences > Log Off.  
-6.	Citrix Receiver clears its application caches, Authentication Manager clears the user’s credentials and disconnects sessions.  
-7.	Citrix Receiver closes the self-service UI and redisplays the startup UI, ready for the next user. 
+6.	Citrix Workspace app clears its application caches, Authentication Manager clears the user’s credentials and disconnects sessions.  
+7.	Citrix Workspace app closes the self-service UI and redisplays the startup UI, ready for the next user. 
 
 #### Set up kiosk mode  
 
 Setting up kiosk mode involves configuring the self-service UI as follows.  
-Important: If a terminal user needs to interact with the local OS or any local applications, do not make the window full-screen (FullscreenMode=1). In this scenario, or if you want the self-service UI windows to be displayed maximized and undecorated (FullscreenMode=2), Receiver does not cover the entire screen, so the user can interact with the environment in possibly unwanted ways. You should therefore take further steps to prevent this. 
+Important: If a terminal user needs to interact with the local OS or any local applications, do not make the window full-screen (FullscreenMode=1). In this scenario, or if you want the self-service UI windows to be displayed maximized and undecorated (FullscreenMode=2), Workspace app does not cover the entire screen, so the user can interact with the environment in possibly unwanted ways. You should therefore take further steps to prevent this. 
  
 1.	Set the desired values for the following settings. These are located in .ICAClient/cache/Stores/StoreCache.ctx:
 
@@ -993,7 +993,7 @@ Important: If a terminal user needs to interact with the local OS or any local a
 
 These settings can alternatively be set using the `storebrowse -c` option or by editing the template file as described elsewhere in this topic.  
 
-&#50;. Modify the device's start up sequence so it starts up into the Receiver UI.
+&#50;. Modify the device's start up sequence so it starts up into the Workspace app UI.
 
 #### Alternatives ways to configure the self-service UI for kiosk mode
   
@@ -1020,7 +1020,7 @@ You can enable automatic redirection of USB devices that are connected when the 
 
 #### Multi-threading 
  
-It can be useful to multi-thread connections to the Citrix Receiver in environments that contain multiple processors. Multi-threading support is on by default but you can turn it off. 
+It can be useful to multi-thread connections to the Citrix Workspace app in environments that contain multiple processors. Multi-threading support is on by default but you can turn it off. 
  
 By default, the Thinwire (Graphics) and Audio virtual channels each run in their own thread. You can configure this using the following settings in module.ini:  
 
@@ -1038,7 +1038,7 @@ A larger queue means that more buffering takes place and results in increased la
  
 #### Monitor real-time performance 
  
-The following procedure applies to Receiver deployments involving XenApp or XenDesktop 7. It uses Citrix End User Experience Monitoring to monitor the following aspects of Citrix Receiver performance, in real time, in a desktop group:
+The following procedure applies to Workspace app deployments involving XenApp or XenDesktop 7. It uses Citrix End User Experience Monitoring to monitor the following aspects of Citrix Workspace app performance, in real time, in a desktop group:
 
 * 2D graphics  
 * Playback of HDX MediaStream Windows Media  
@@ -1047,7 +1047,7 @@ The following procedure applies to Receiver deployments involving XenApp or XenD
 
 **Important**: This monitoring feature is designed for OEM's in-house testing not for administrator's use in customer deployments
   
-1.	On the user device, browse to the Receiver installation location by typing cd  
+1.	On the user device, browse to the Workspace app installation location by typing cd  
 /opt/Citrix/ICAClient where /opt/Citrix/ICAClient is the installation location.  
 2.	Run the following command:  `wfica –rm <options> <ICA file>.ica`
 
@@ -1093,7 +1093,7 @@ You can use HDX Monitor or Perfmon to monitor audio input to and output from the
 
 The CPU frequency governor is an operating system component that allows the clock speed of processors to be adjusted on the fly. 
  
-On some systems (for example, ARM devices), the CPU frequency governor can influence the performance of Receiver. Specifically, you might notice that the frame rate alternates between low and high repeatedly when a 720p host-rendered video is played, or when some other, equally intensive activity is performed.  
+On some systems (for example, ARM devices), the CPU frequency governor can influence the performance of Workspace app. Specifically, you might notice that the frame rate alternates between low and high repeatedly when a 720p host-rendered video is played, or when some other, equally intensive activity is performed.  
 
 Furthermore, in *ondemand* mode the CPU frequency can change dynamically, based on the system load. In some cases, the frequency appears to be miscalculated in a given time period, resulting in a lower frequency being momentarily set. A low frame rate therefore results during that period.  
 
@@ -1101,13 +1101,13 @@ Check that your CPU frequency governor functions correctly, or enforce a perform
 
 #### Flow control  
 
-With XenDesktop 7, Receiver can throttle session performance based on two factors, the available serverto-client bandwidth and the client processing load. With XenDesktop 7.1, this feature lets you control performance using a third factor, the client-to-server bandwidth. Client processing load is especially important for maintaining an optimal user experience on low performance user devices by allowing a server of higher performance to match the devices' capabilities by dynamically adjusting its Thinwire frame rate. This avoids overloading devices, which in turn reduces session latency.  
+With XenDesktop 7, Workspace app can throttle session performance based on two factors, the available serverto-client bandwidth and the client processing load. With XenDesktop 7.1, this feature lets you control performance using a third factor, the client-to-server bandwidth. Client processing load is especially important for maintaining an optimal user experience on low performance user devices by allowing a server of higher performance to match the devices' capabilities by dynamically adjusting its Thinwire frame rate. This avoids overloading devices, which in turn reduces session latency.  
 
-In XenDesktop 7, this feature is disabled by default on the server, but in Version 7.1 it is enabled by default so, depending on the performance capabilities of your user devices, you may want to disable it in Citrix Receiver.  
+In XenDesktop 7, this feature is disabled by default on the server, but in Version 7.1 it is enabled by default so, depending on the performance capabilities of your user devices, you may want to disable it in Citrix Workspace app.  
 
 **Note**: This feature is separate to the flow control feature for HDX MediaStream Windows Media Redirection, which is described elsewhere in this document.  
 
-#### To disable flow control in Receiver 
+#### To disable flow control in Workspace app 
  
 In wfclient.ini, set FlowControlEnabled to False in the [WFClient] section. 
 

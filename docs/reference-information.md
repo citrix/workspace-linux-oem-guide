@@ -21,11 +21,11 @@ You can use a connection file simply by typing its name after wfica without any 
 | Specify a connection file.  | `-file connection_filename` |
 | Set alternative protocol file. This enables the use of an alternative module.ini. |   `-protocolfile filename` |
 | Set alternative client configuration file. This enables the use of an alternative wfclient.ini. | `-clientfile filename` |
-| Display a different name for Receiver, specified by name, wherever that name appears. The default name is the device name. However, if you use a Sunray device, the default name is derived from the device's MAC address. This is overridden by the ClientName entry in .ICAClient/wfclient.ini, which is itself overridden by issuing the - clientname option. | `-clientname name`  | 
+| Display a different name for Workspace app, specified by name, wherever that name appears. The default name is the device name. However, if you use a Sunray device, the default name is derived from the device's MAC address. This is overridden by the ClientName entry in .ICAClient/wfclient.ini, which is itself overridden by issuing the - clientname option. | `-clientname name`  | 
 | Show this list of parameters. | `-help`  |
 | Display version information.  | `-version` |  
 | Show error numbers and string.  | `-errno` |  
-| Set the location of Receiver installation files. This is equivalent to setting the ICAROOT environment variable. | `-icaroot directory` |  
+| Set the location of Workspace app installation files. This is equivalent to setting the ICAROOT environment variable. | `-icaroot directory` |  
 | Suppress connection dialogs.  | `-quiet` |  
 | Enable key logging.  | `-keylog` |
 | Set session geometry.  | `-geometry WxH+X+Y` |
@@ -61,10 +61,10 @@ The following table documents the options that you can use with the storebrowse 
 | `-U`,  `--username` | Passes the user name to the server. | These options work with Program Neighborhood Agent sites and StoreFront sites. When used with a StoreFront site, the site must be configured to support HTTP Basic authentication, otherwise, these options are ignored. |
 | `-P`,  `--password` | Passes the password to the server. | These options work with Program Neighborhood Agent sites and StoreFront sites. When used with a StoreFront site, the site must be configured to support HTTP Basic authentication, otherwise, these options are ignored. |
 | `-D`, `--domain` | Passes the domain to the server.  | These options work with Program Neighborhood Agent sites and StoreFront sites. When used with a StoreFront site, the site must be configured to support HTTP Basic authentication, otherwise, these options are ignored. |
-| `-r`, `--icaroot` | Specifies the root directory of the Citrix Receiver for Linux installation. | If not specified, the value is taken from the ICAROOT environment variable or determined at run time. |
+| `-r`, `--icaroot` | Specifies the root directory of the Citrix Workspace app for Linux installation. | If not specified, the value is taken from the ICAROOT environment variable or determined at run time. |
 | `-i`, `--icons` <br><br> Use in conjunction with the `-E` or `-S` option. | Fetches desktop or application icons, in PNG format, of the size and depth given by the best or size argument. <br><br> If the best argument is used, the best sized icon available on the server is fetched. You can convert this to any size required. The best argument is the most efficient for storage and bandwidth, and can simplify scripting. <br><br> If the size argument is used, an icon is fetched of the specified size and depth. <br><br> In both cases, icons are saved in a file for each of the resources that the `–E` or `-S` option returns. | The `best` argument creates an icon of the form `<resource name>`.png. <br><br> The size argument is of the form WxB, where W is the width of the icon (all icons are square, so only one value is needed to specify the size), and B is the color depth (that is, the number of bits per pixel). W is required but B is optional. If it is not specified, icons of all available image depths are fetched for that size. The files that are created are named `<resource name>_WxWxB.png`.  |
 | `-u`, 	`--unsubscribe` | Unsubscribes the specified resource from the given store. | |  
-| `-s`, `--subscribe` | Subscribes the specified resource from the given store. | If you use a different Receiver, subscriptions on Program Neighborhood Agent servers are unavailable.  |
+| `-s`, `--subscribe` | Subscribes the specified resource from the given store. | If you use a different Workspace app, subscriptions on Program Neighborhood Agent servers are unavailable.  |
 
 **Important**: The unique gateway
 
@@ -72,7 +72,7 @@ The following table documents the options that you can use with the storebrowse 
 |---|---|---|
 | `-d`, `--deletestore` | Deregisters a store with the Service Record daemon. | |
 | `-c`, `--configselfservice` | Gets and sets the self- service UI settings that are stored in StoreCache.ctx. Takes an argument of the form `<entry[=value]>`. If only entry is present, the setting's current value is printed. If a value is present, it is used to configure the setting. | **Example**: `storebrowse --configselfservice SharedUserMode=True` <br><br> **Important**: Both entry and value are case sensitive. Commands that use this option will fail if the case is different to the documented case of the setting itself (in StoreCache.ctx). |  
-| `-C`, `--addCR` | Reads the provided Citrix Receiver (CR) file, and prompts the user to add each store.  | The output is the same as `–a`, but might contain more than one store, separated by newlines. |
+| `-C`, `--addCR` | Reads the provided Citrix Workspace app (CR) file, and prompts the user to add each store.  | The output is the same as `–a`, but might contain more than one store, separated by newlines. |
 | `-K`, `--killdaemon` | Terminates the storebrowse daemon process.  | All credentials and tokens are purged. The SSO credentials inserted last are also removed. |
 
 ### storebrowse return codes  
@@ -188,9 +188,9 @@ For any given connection, the configuration files are checked in a specific orde
 
 ### wfclient.ini  
 
-This .ini file contains a section for parameters specific to the Receiver user interface (UI), such as version number and desired resolution.  
+This .ini file contains a section for parameters specific to the Workspace app user interface (UI), such as version number and desired resolution.  
 
-In Version 10.x and later of Receiver for Linux, for each entry in wfclient.ini, there must be a corresponding entry in All\_Regions.ini for the setting to take effect. In addition, for each entry in the [Thinwire3.0], [ClientDrive], and [TCP/IP] sections of wfclient.ini, there must be a corresponding entry in canonicalization.ini for the setting to take effect. See the All\_Regions.ini and canonicalization.ini files in the $ICAROOT/config/ directory for more information.
+In Version 10.x and later of Workspace app for Linux, for each entry in wfclient.ini, there must be a corresponding entry in All\_Regions.ini for the setting to take effect. In addition, for each entry in the [Thinwire3.0], [ClientDrive], and [TCP/IP] sections of wfclient.ini, there must be a corresponding entry in canonicalization.ini for the setting to take effect. See the All\_Regions.ini and canonicalization.ini files in the $ICAROOT/config/ directory for more information.
 
 ### Parameter syntax  
 
@@ -231,8 +231,8 @@ In the following table, the parameters are listed alphabetically within each sec
 | `CRPlayerCommand=string`  |	Server to client content redirection media player command. `Default=realplay %s Obsolete`. |
 | `CRPlayerPath=string`  | 	Server to client content redirection media player path.   No default. Use `$PATH` Obsolete. |
 | `CursorStipple=hex_integer,he x_integer` | Defines a stipple pattern in cursor masks to replace inversion regions in Windows cursors. Default=aaaa,5555 |
-| `DefaultPrinter=string` |  	Print queue to be used as the default printer in the Citrix XenApp session. For more information, see Receiver for Linux on the [Product Documentation site](http://docs.citrix.com/). |
-| `DefaultPrinterDriver=string` | Printer driver to be used for the default printer in XenApp sessions on Windows. For more information, see Receiver for Linux on the [Product Documentation site](http://docs.citrix.com/). |
+| `DefaultPrinter=string` |  	Print queue to be used as the default printer in the Citrix XenApp session. For more information, see Workspace app for Linux on the [Product Documentation site](http://docs.citrix.com/). |
+| `DefaultPrinterDriver=string` | Printer driver to be used for the default printer in XenApp sessions on Windows. For more information, see Workspace app for Linux on the [Product Documentation site](http://docs.citrix.com/). |
 | `DeferredUpdateMode=boolean` |  	Enables batched updates from the Local Video Buffer (LVB) to the screen. The LVB is used when seamless windows or SpeedScreen Latency Reduction are in use, and for 256-color connections when specified by the UseSDLVB parameter. Default=False  |
 | `DisableClientAutoQuit=boolean` | Quit client on disconnect. Ignored. |
 | `DisableCtrlAltDel=boolean` | Disable requirement for Ctrl+Alt+Delete event to start logon to a Windows server. Default=On. Must be Off for smart card logons. | 
@@ -325,7 +325,7 @@ In the following table, the parameters are listed alphabetically within each sec
 | `SSLInTitle=boolean` | Controls whether or not the SSL strength indicator is shown in a session window's title bar. Default=On  |
 | `SSOnUserSetting=boolean` | Allows UseLocalUserAndPassword to be trusted in appsrv.ini. Default=False |
 | `StopOnUnmap=boolean` | Commands the server to stop sending screen updates when the session window is iconified. Default=True |
-| `SucConnTimeout=integer` | Works with the `ApplySucConnTimeoutToDesktops` setting.  Specifies the number of seconds to wait for a recently started session to become available for session sharing. When `ApplySucConnTimeoutToDesktops` is applied to desktops, repeated clicks Delaunch multiple sessions, but you can set SucConnTimeout to a suitable timeout and run a custom script in between the desktop launches. Default=20. **Note**: To revert to the behavior in versions before Receiver for Linux 13.0, and allow a separate session launch for each click, set SucConnTimeout to 0. |
+| `SucConnTimeout=integer` | Works with the `ApplySucConnTimeoutToDesktops` setting.  Specifies the number of seconds to wait for a recently started session to become available for session sharing. When `ApplySucConnTimeoutToDesktops` is applied to desktops, repeated clicks Delaunch multiple sessions, but you can set SucConnTimeout to a suitable timeout and run a custom script in between the desktop launches. Default=20. **Note**: To revert to the behavior in versions before Workspace app for Linux 13.0, and allow a separate session launch for each click, set SucConnTimeout to 0. |
 | `SunRayClientName=string`| Specifies the prefix part of a SunRay client name with URL escape characters. This allows trailing spaces, represented by %20. The remaining part of the client name is based on the Ethernet address of the SunRay terminal. Default=SunRay- | 
 | `TcpBrowserAddress=string` | Server name or IP address to use for browsing. No default. Use broadcast. | 
 | `TcpBrowserAddress2...15=string` | Controls the protocol used to locate the ICA host for the connection. This is a default value for connections that do not specify it individually. | 
@@ -345,7 +345,7 @@ In the following table, the parameters are listed alphabetically within each sec
 | `UseIconWindow=boolean` | Uses a window rather than a pixmap for the icons of session windows. This is required for strict CM compliance, but note that many window managers do not show icons correctly if this is set to True. Default=False |
 | `UseLocalIM=boolean` | 	Uses the local X input method to interpret keyboard input. This is supported only for European languages. Default=True | 
 | `UseLocalUserAndPassword=boolean` | 	Enables Kerberos authentication for the current connection (see also SSOnUserSetting and EnableSSOThruICAFile). Default = False |
-| `UsePrintcap=boolean` | Allows Receiver for Linux to look for printers in /etc/printcap. Default=False  |
+| `UsePrintcap=boolean` | Allows Workspace app for Linux to look for printers in /etc/printcap. Default=False  |
 | `UserVisualClass=string` | Allow user-specified X visual class. Value is PseudoColor, TrueColor, or Grayscale. No default. |  
 | `UserVisualID=hexadecimalinteger` | 	Uses this X visual, if possible, for session windows. No default.  |
 | `Version=integer` | Fixed value=2, overrides value in appsrv.ini, ignored.  
@@ -595,7 +595,7 @@ Kerberos. Default=libkcph.so  |
 | `LIBKCP=string` | The library to use for changing an expired password using MITKerberos. Default=libkcpm.so | 
 | `PrinterFlowControl=boolean` | Enables flow control in the printing channel, usually only used with `UnixPrintCommand` when the command is blocked. Default = Off  |
 | `[CEIP]` | This section contains information about the Citrix Customer Experience Improvement Program (CEIP). |
-| `EnableCeip=Enable` | By default, you are automatically enrolled in CEIP when you install Citrix Receiver for Linux. |
+| `EnableCeip=Enable` | By default, you are automatically enrolled in CEIP when you install Citrix Workspace app for Linux. |
 | `[WebPageRedirection]` | This section contains information about driver which is used for browser content redirection. |
 | `DriverName = VDBROWSER.DLL` |  |
 | `[PortForward]` | This section contains information about driver which is used for  port forwarding. |
@@ -621,7 +621,7 @@ For more information, see the configuration files in the `$ICAROOT/config/` dire
 
 ## Library files  
 
-You can disable specific functionality from Citrix Receiver for Linux by removing the appropriate shared library file (.dll or .so file) from a client installation. The following table describes these libraries.  
+You can disable specific functionality from Citrix Workspace app for Linux by removing the appropriate shared library file (.dll or .so file) from a client installation. The following table describes these libraries.  
 
 | File | Location | Description |
 |---|---|---|
@@ -641,7 +641,7 @@ You can disable specific functionality from Citrix Receiver for Linux by removin
 | gst\_play | /opt/Citrix/ICAClient/util | A GStreamer utility required for HDX Windows Multimedia Redirection. |
 | gst\_read | /opt/Citrix/ICAClient/util | HDX RealTime Webcam Video Compression requires GStreamer 0.10.25 (or a later 0.10.x version), 
 including the distribution's "plugins-good" package; or GStreamer 1.0 (or a later 1.x version), including the distribution’s “plugins-base,” “plugins-good,” “plugins-bad,” “plugins-ugly,” and “gstreamer-libav” packages. If GStreamer is not included in your Linux distribution, you can download it from [http://gstreamer.freedesktop.org](http://gstreamer.freedesktop.org). |
-| libAMSDK.so | /opt/Citrix/ICAClient/lib | SDK used for communications between Receiver and Authentication Manager. This is required for connections using storebrowse or selfservice, but not pnabrowse. |
+| libAMSDK.so | /opt/Citrix/ICAClient/lib | SDK used for communications between Workspace app and Authentication Manager. This is required for connections using storebrowse or selfservice, but not pnabrowse. |
 | libcrypto.so | This is a system library. | Cryptographic functions used to authenticate to NTLM proxies. Can be downloaded from [http://www.openssl.org/](http://www.openssl.org/). |
 | libproxy.so | /opt/Citrix/ICAClient | Contains functionality for using proxies and functionality for Citrix SSL Relay, which provides endto-end Secure Sockets Layer/ Transport Layer Security (SSL/TLS) encryption between specific servers and clients. |
 | libcoreavc\_sdk.so | /opt/Citrix/ICAClient/lib | The library required by ctxh264\_fb.so. |  
@@ -659,7 +659,7 @@ including the distribution's "plugins-good" package; or GStreamer 1.0 (or a late
 | VDGUSB.DLL | /opt/Citrix/ICAClient | Provides support for Generic USB redirection.  
 | VDGSTCAM.DLL | /opt/Citrix/ICAClient | Provides an experimental GStreamer based implementation of Client Audio Mapping. | 
 | VDMM.DLL | /opt/Citrix/ICAClient | Contains functionality for HDX MultiStream Windows Media Redirection. |
-| VDSCARD.DLL | /opt/Citrix/ICAClient | Contains functionality for smart card support. The support is based around the PC/SC standard, to which any deployment of Receiver for Linux involving smart cards must adhere. | 
+| VDSCARD.DLL | /opt/Citrix/ICAClient | Contains functionality for smart card support. The support is based around the PC/SC standard, to which any deployment of Workspace app for Linux involving smart cards must adhere. | 
 | VORBIS.DLL | /opt/Citrix/ICAClient | Provides preferred support for high quality audio. | 
   
  
@@ -701,8 +701,10 @@ including the distribution's "plugins-good" package; or GStreamer 1.0 (or a late
 
 
 
-  
- 
+  
+
+ 
+
 
  
  
