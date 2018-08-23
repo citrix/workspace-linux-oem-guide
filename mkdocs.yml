@@ -1,5 +1,5 @@
-site_name: Citrix Workspace app for Linux 1808 OEM Reference Guide 
-site_description: OEM Reference guide for Citrix Workspace app for Linux 1808 
+site_name: Citrix Workspace app 1808 for Linux OEM Reference Guide 
+site_description: OEM Reference guide for Citrix Workspace app 1808 for Linux 
 theme_dir: citrix-sdk
 
 markdown_extensions:
