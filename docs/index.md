@@ -1,4 +1,4 @@
-# Citrix Workspace app 1809 for Linux OEM Reference Guide  
+# Citrix Workspace app for Linux OEM Reference Guide  
 
 The purpose of this document is to support Original Equipment Manufacturers (OEMs) who integrate Citrix® Workspace app™ for Linux® into their own or customers' deployments. The document helps you: 
  
