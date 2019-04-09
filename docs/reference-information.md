@@ -256,13 +256,13 @@ In the following table, the parameters are listed alphabetically within each sec
 | `ForceRedrawOnReset=boolean` | Force server to redraw after a Thinwire reset. This may be needed to clean-up the screen on entry or exit from Shadowing. Default=True  |
 | `HBCCapMB` | Sets the cap of the hot bitmap cache. This value is also used when `BatchDecoding` is enabled and replaces `BatchDecodeCacheSize`. Default=48 |
 | `HDXoverUDP= string` | Transport protocol; On – Use UDP and do not fall back to TCP on failure; Off – Use TCP; Preferred – Try UDP first and fall back to TCP on failure  Default=Off. |
-| `udtMSS= integer` | UDT maximum segment size in bytes. Default = 1500. |
-| `udtRCVBUF=integer` | Receive flow window * (udtMSS-28) in bytes. Default = 0. |
-| `udtSNDBUF=integer` | Send flow window * (udtMSS-28) in bytes. Default = 0. |
-| `udtUDPRCVBUF=integer` | SO\_RCVBUF value passed to underlying UDP socket. Default = 0.| 
-| `udtUDPSNDBUF=integer` | SO\_SNDBUF value passed to underlying UDP socket. Default = 0.| 
-| `udtIFlightFlagSize=integer` | Buffer count related to in-flight data. Default = 0.| 
-| `udtNSGHAFTimeout=integer`| NetScaler Gateway high-availability failover timeout.|  Default = 0.| 
+| `edtMSS= integer` | EDT maximum segment size in bytes. Default = 1500. |
+| `edtRCVBUF=integer` | Receive flow window * (edtMSS-28) in bytes. Default = 0. |
+| `edtSNDBUF=integer` | Send flow window * (edtMSS-28) in bytes. Default = 0. |
+| `edtUDPRCVBUF=integer` | SO\_RCVBUF value passed to underlying UDP socket. Default = 0.| 
+| `edtUDPSNDBUF=integer` | SO\_SNDBUF value passed to underlying UDP socket. Default = 0.| 
+| `edtIFlightFlagSize=integer` | Buffer count related to in-flight data. Default = 0.| 
+| `edtNSGHAFTimeout=integer`| NetScaler Gateway high-availability failover timeout.|  Default = 0.| 
 | `HDXWebCamDebug=boolean`| Enables the gst_read debug option. Default=False |  
 | `HDXWebCamDelayTime=integer`| The period of time, in milliseconds, to wait before opening a webcam during a session. Default=2000ms | 
 | `HDXWebCamDelayType=integer`| Determines whether or not to delay the opening of a webcam during a session. 0=do not delay opening, 1=if last close was less than delay time, delay by time remaining, 2=always delay. Default=1 |  
