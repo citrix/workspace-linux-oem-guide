@@ -446,7 +446,7 @@ The UI dialog library is used for most of the dialogs that are displayed by Work
   
 However, all of their functionality is available in the storebrowse command-line utility and the configuration files. The graphic on the following page represents the library's architecture and use by Workspace app components. Note that two further utilities, Connection Center and xcapture are completely dependent on X11 and are not shown on this graphic. 
 
-The SDK includes UI Dialog libraries using libwebkit2gtk (2.16.6). The newly added libraries are UIDialogLibWebKit3.so and UIDialogLibWebKit3_ext.so. For instructions on getting started with the UI Dialog library, see the Readme in the UIDialogLib3 directory.
+UI Dialog libraries include libwebkit2gtk (2.16.6). The newly added libraries are UIDialogLibWebKit3.so and UIDialogLibWebKit3_ext.so. For instructions on getting started with the UI Dialog library, see the Readme in the UIDialogLib3 directory.
  
 For further documentation and examples to aid implementation of the API, refer to the Platform Optimization SDK. 
 
