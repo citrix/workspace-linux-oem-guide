@@ -445,6 +445,8 @@ For alternative windowing systems to X Windows and their toolkits, you can devel
 The UI dialog library is used for most of the dialogs that are displayed by Workspace app for Linux processes, including the X11-based wfica. The processes storebrowse, AuthManager, PrimaryAuthManager, and ServiceRecord use it for their entire user interface (UI). By reimplementing the library, you can replace the UI of these essential processes with a toolkit of your choosing. Except for dialogs, the remaining processes (self-service, configmgr, and X11 wfica binaries) require GTK+ for other aspects of their UI, and therefore cannot be used with a different implementation of the library than the GTK+ implementation provided with Workspace app.
   
 However, all of their functionality is available in the storebrowse command-line utility and the configuration files. The graphic on the following page represents the library's architecture and use by Workspace app components. Note that two further utilities, Connection Center and xcapture are completely dependent on X11 and are not shown on this graphic. 
+
+The SDK includes UI Dialog libraries using libwebkit2gtk (2.16.6). The newly added libraries are UIDialogLibWebKit3.so and UIDialogLibWebKit3_ext.so. For instructions on getting started with the UI Dialog library, see the Readme in the UIDialogLib3 directory.
  
 For further documentation and examples to aid implementation of the API, refer to the Platform Optimization SDK. 
 
