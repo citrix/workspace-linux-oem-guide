@@ -649,7 +649,6 @@ including the distribution's "plugins-good" package; or GStreamer 1.0 (or a late
 | libkcph.so | /opt/Citrix/ICAClient/lib | Provides password change support for pnabrowse using Heimdal Kerberos. | 
 | libkcpm.so | /opt/Citrix/ICAClient/lib | Provides password change support for pnabrowse using MIT Kerberos. | 
 | new\_store | /opt/Citrix/ICAClient/util | A helper script used by npica.so to handle CR files. |
-| npica.so | /opt/Citrix/ICAClient | Plug-in for web browsers that are compatible with Netscape software. |
 | PDCRYPT1.DLL | /opt/Citrix/ICAClient | Contains basic Citrix encryption functionality. Citrix recommends that you do not remove this library. |
 | PDCRYPT2.DLL | /opt/Citrix/ICAClient | Contains functionality for Citrix Secure ICA, which encrypts information sent between servers and clients. |  
 | SPEEX.DLL | /opt/Citrix/ICAClient | Provides preferred support for low and medium quality audio.|  
