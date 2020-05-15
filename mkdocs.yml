@@ -5,7 +5,7 @@ site_url: https://developer-docs.citrix.com
 
 
 # Copyright
-copyright: 'Copyright &copy; 1999-2019 Citrix Systems, Inc. All rights reserved. '
+copyright: 'Copyright &copy; 1999-2020 Citrix Systems, Inc. All rights reserved. '
 
 extra_css:
   - 'assets/stylesheets/extra.css'
@@ -25,26 +25,31 @@ theme:
 
   # Default values, taken from mkdocs_theme.yml
   language: en
-  feature:
-    tabs: false
+  features:
+    - tabs: false
   palette:
     primary: white
     accent: blue
   font: false
-  favicon: /media/favicon.ico
+  favicon: https://citrix.com/favicon.ico
   logo: https://developer-docs.citrix.com/_static/Citrix_Logo_Black.png
+  icon: fontawesome
 
 # Customization
 extra:
   social:
-    - type: youtube
+    - icon: fontawesome/brands/youtube
       link: https://www.youtube.com/channel/UCiOupk9QF6jdk3EDKTHDykA
-    - type: github-alt
+    - icon: fontawesome/brands/github-alt
       link: https://github.com/citrix
-    - type: twitter
+    - icon: fontawesome/brands/twitter
       link: https://twitter.com/citrixdeveloper
-    - type: linkedin
+    - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/citrix/
+
+plugins:
+  - search:
+      separator: '[\s\-\.]+'
 
 markdown_extensions:
   - admonition
