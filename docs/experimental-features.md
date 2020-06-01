@@ -25,7 +25,7 @@ In earlier releases, GStreamer 0.10 was the default version supported for multim
 -  When you play a video, forward and backward seek might not work as expected.
 -  When you launch the Citrix Workspace app on ARMHF devices, GStreamer 1.x might not work as expected.
 
-For more information, see [Enabling GStreamer 1.x](/en-us/citrix-workspace-app-for-linux/configure-xenapp.html#enabling-gstreamer-1x).
+For more information, see [Enabling GStreamer 1.x](https://docs.citrix.com/en-us/citrix-workspace-app-for-linux/configure-xenapp.html#enabling-gstreamer-1x).
 
 ## Chromium Embedded Framework (CEF) for Browser Content Redirection (BCR)
 
@@ -33,7 +33,7 @@ The BCR feature redirects contents of a web browser to a client device, and crea
 
 In earlier releases, BCR used a WebkitGTK+ based overlay to render the content. However, on thin clients, there were performance issues. Starting with this release, BCR uses a CEF based overlay. This functionality enriches the user experience for BCR. It helps offload network usage, page processing, and graphics rendering to the endpoint.
 
-For more information, see [Enabling CEF based BCR.](/en-us/citrix-workspace-app-for-linux/configure-xenapp.html#enabling-cef-based-bcr)
+For more information, see [Enabling CEF based BCR.](https://docs.citrix.com/en-us/citrix-workspace-app-for-linux/configure-xenapp.html#enabling-cef-based-bcr)
 
 For information about BCR, see [Browser content redirection](https://docs.citrix.com/en-us/citrix-virtual-apps-desktops/multimedia/browser-content-redirection.html) in the Citrix Virtual Apps and Desktops documentation.
 
@@ -62,9 +62,9 @@ Delivering SaaS apps from the cloud has the following benefits:
 >
 > SaaS with Citrix Browser Engine is supported only on x64 and x86 platforms and not on ArmHardFloatPort (armhf) hardware.
 
-For information on how to configure SaaS apps using Access Control Services, see the [Access Control](/en-us/citrix-access-control.html) documentation.
+For information on how to configure SaaS apps using Access Control Services, see the [Access Control](https://docs.citrix.com/en-us/citrix-access-control.html) documentation.
 
-For more information about SaaS apps with Citrix Workspace app, see [Workspace configuration](/en-us/citrix-workspace-app-for-windows/configure.html#workspace-configuration) in in Citrix Workspace app for Windows documentation.
+For more information about SaaS apps with Citrix Workspace app, see [Workspace configuration](https://docs.citrix.com/en-us/citrix-workspace-app-for-windows/configure.html#workspace-configuration) in in Citrix Workspace app for Windows documentation.
 
 ## GStreamer audio
 
