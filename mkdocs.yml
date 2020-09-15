@@ -1,41 +1,48 @@
 site_name: Citrix Workspace app for Linux OEM Reference Guide 
 site_description: OEM Reference guide for Citrix Workspace app for Linux 
 site_title: Developer Docs
-site_url: https://developer-docs.citrix.com
-
+site_url: https://developer-docs.citrix.com/
 
 # Copyright
-copyright: 'Copyright &copy; 1999-2020 Citrix Systems, Inc. All rights reserved. '
+copyright: '&copy; 1999-2020 Citrix Systems, Inc. All rights reserved. '
+
+# Feedback
+
+issues_uri: https://github.com/citrix/workspace-linux-oem-guide/issues/new
+assignees_uri:
+  - ajitchelat
+labels_uri:
+  - documentation
 
 extra_css:
   - 'assets/stylesheets/extra.css'
+  - https://use.fontawesome.com/releases/v5.12.1/css/all.css
 
 # Configuration
 theme:
   name: null
   custom_dir: devdocs-theme
-
+  
   # 404 page
   static_templates:
     - 404.html
-
+  
   # Don't include MkDocs' JavaScript
   include_search_page: false
   search_index_only: true
-
+  
   # Default values, taken from mkdocs_theme.yml
   language: en
   features:
     - tabs: false
   palette:
-    primary: white
-    accent: blue
+    primary: teal
+    accent: teal
   font: false
-  favicon: https://citrix.com/favicon.ico
-  logo: https://developer-docs.citrix.com/_static/Citrix_Logo_Black.png
+  favicon: https://docs.citrix.com/assets/images/favicon.ico
+  logo: https://developer-docs.citrix.com/_static/logo.svg
   icon: fontawesome
 
-# Customization
 extra:
   social:
     - icon: fontawesome/brands/youtube
@@ -47,18 +54,15 @@ extra:
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/citrix/
 
-plugins:
-  - search:
-      separator: '[\s\-\.]+'
-
 markdown_extensions:
   - admonition
   - codehilite
   - toc:
       permalink: true
-  - footnotes
-  - meta
-  - extra
+
+plugins:
+  - search:
+      separator: '[\s\-\.]+'
 
 # Page tree
 nav:
