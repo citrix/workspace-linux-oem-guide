@@ -8,7 +8,7 @@ copyright: '&copy; 1999-2020 Citrix Systems, Inc. All rights reserved. '
 
 # Feedback
 
-issues_uri: https://github.com/citrix/workspace-linux-oem-guide/issues/new
+issues_uri: https://github.com/citrix/devdocs-issue-collector/issues/new
 assignees_uri:
   - ajitchelat
 labels_uri:
