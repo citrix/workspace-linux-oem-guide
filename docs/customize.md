@@ -330,7 +330,11 @@ DefaultStore=<store URL>
 
 ### File Access page 
  
-The File Access page uses the following settings in the [WFClient] section in wfclient.ini to add, remove, and change read-write access to mapped drives. Replace the ? (question mark) with the letter of the drive that you want to map. 
+The File Access page uses the following settings in the [WFClient] section in wfclient.ini to add, remove, and change read-write access to mapped drives. Replace the ? (question mark) with the letter of the drive that you want to map.
+
+> **Note:**
+>
+> The following access level flags in the wfclient.ini file are not supported in Citrix Workspace app for Linux version 2012 or later.
 
 | Setting | Description |
 |---|---|
